@@ -1,0 +1,55 @@
+CREATE EXTENSION safecast;
+SELECT to_integer('1sasdf');
+ to_integer 
+------------
+           
+(1 row)
+
+SELECT to_integer('123123');
+ to_integer 
+------------
+     123123
+(1 row)
+
+SELECT to_float('0.123asfd');
+ to_float 
+----------
+         
+(1 row)
+
+SELECT to_float('0.123');
+ to_float 
+----------
+    0.123
+(1 row)
+
+SELECT to_bigint('a12345678x9123456789z');
+ to_bigint 
+-----------
+          
+(1 row)
+
+SELECT to_bigint('123456789123456789');
+     to_bigint      
+--------------------
+ 123456789123456789
+(1 row)
+
+SELECT to_double_precision('0.123asfd');
+ to_double_precision 
+---------------------
+                    
+(1 row)
+
+SELECT to_double_precision('0.123');
+ to_double_precision 
+---------------------
+                    
+(1 row)
+
+SELECT to_double_precision('12.123');
+ to_double_precision 
+---------------------
+                    
+(1 row)
+

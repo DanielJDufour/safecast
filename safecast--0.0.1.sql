@@ -1,5 +1,5 @@
 -- complain if script is sourced in psql, rather than via CREATE EXTENSION
-\echo Use "CREATE EXTENSION base36" to load this file. \quit
+\echo Use "CREATE EXTENSION safecast" to load this file. \quit
 
 CREATE OR REPLACE FUNCTION to_integer(arg text)
 RETURNS int AS $$
@@ -14,4 +14,9 @@ $$ LANGUAGE sql;
 CREATE OR REPLACE FUNCTION to_bigint(arg text)
 RETURNS bigint AS $$
     SELECT CASE WHEN arg~E'^\\d+$' THEN arg::bigint ELSE NULL END;
+$$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION to_double_precision(arg text)
+RETURNS double precision AS $$
+    SELECT CASE WHEN arg~E'^\\d+$' THEN Cast(arg as double precision) ELSE NULL END;
 $$ LANGUAGE sql;
